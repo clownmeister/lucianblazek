@@ -19,9 +19,6 @@ return function (App $app) {
         $response->getBody()->write('Hello world!');
         return $response;
     });
+//    $app->get('/', KeycloakClientController::class . ':index')->setName('app.keycloak');
 
-    $app->group('/users', function (Group $group) {
-        $group->get('', ListUsersAction::class);
-        $group->get('/{id}', ViewUserAction::class);
-    });
 };

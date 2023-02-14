@@ -1,24 +1,19 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
+    "name": "clownmeister/lucianblazek",
+    "description": "Personal domain",
     "keywords": [
         "microframework",
         "rest",
         "router",
         "psr7"
     ],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "homepage": "https://github.com/clownmeister/lucianblazek",
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
-        },
-        {
-            "name": "Pierre Berube",
-            "email": "pierre@lgse.com",
-            "homepage": "http://www.lgse.com/"
+            "name": "Lucián Blažek",
+            "email": "lucianblazek@gmail.com",
+            "homepage": "https://www.lucianblazek.com/"
         }
     ],
     "require": {
@@ -27,7 +22,8 @@
         "monolog/monolog": "^2.8",
         "php-di/php-di": "^6.4",
         "slim/psr7": "^1.6",
-        "slim/slim": "^4.11"
+        "slim/slim": "^4.11",
+        "slim/twig-view": "^3.3"
     },
     "require-dev": {
         "jangregor/phpstan-prophecy": "^1.0.0",

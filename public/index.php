@@ -9,6 +9,8 @@ use App\Application\Settings\SettingsInterface;
 use DI\ContainerBuilder;
 use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -34,10 +36,15 @@ $repositories($containerBuilder);
 // Build PHP-DI Container instance
 $container = $containerBuilder->build();
 
+$twig = Twig::create(__DIR__ . '/../src/view', ['cache' => __DIR__ . '/../var/cache/twig/', 'debug' => true]);
+$container->set('twig', $twig);
+
 // Instantiate the app
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $callableResolver = $app->getCallableResolver();
+
+$app->add(TwigMiddleware::create($app, $twig));
 
 // Register middleware
 $middleware = require __DIR__ . '/../app/middleware.php';
