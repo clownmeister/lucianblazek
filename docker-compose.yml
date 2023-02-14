@@ -1,0 +1,46 @@
+version: '3.7'
+
+networks:
+    internal:
+        external: false
+        driver: bridge
+        name: ${CONTAINER_NAME_PREFIX}-internal
+
+x-defaults: &defaults
+    tty: true
+    restart: ${DOCKER_RESTART_POLICY}
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "10"
+            max-size: "10m"
+
+volumes:
+    logs:
+        driver: local
+
+services:
+    php:
+        <<: *defaults
+        image: php:8.1.13-fpm-buster
+        working_dir: /var/www
+        environment:
+            docker: "true"
+        ports:
+            - "8080:8080"
+        volumes:
+            - .:/var/www
+            - logs:/var/www/logs
+    web:
+        <<: *defaults
+        image: ${APP_IMAGE}
+        container_name: ${CONTAINER_NAME_PREFIX}-app
+        ports:
+            - ${APP_IP}:${APP_PORTS}
+        networks:
+            - internal
+        depends_on:
+            - app-php
+        volumes:
+            - ./docker/nginx/conf.d/${ENVIRONMENT}.conf:/etc/nginx/conf.d/default.conf:ro
+            - ./:/var/www/html
