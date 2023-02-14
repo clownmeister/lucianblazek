@@ -26,6 +26,7 @@ services:
         build: './docker/php'
         container_name: ${CONTAINER_PREFIX}-php
         working_dir: /var/www
+        user: ${DEV_UID}:${DEV_GID}
         networks:
             - internal
         environment:

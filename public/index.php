@@ -11,6 +11,7 @@ use Slim\Factory\AppFactory;
 use Slim\Factory\ServerRequestCreatorFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Twig\Extension\DebugExtension;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -37,6 +38,7 @@ $repositories($containerBuilder);
 $container = $containerBuilder->build();
 
 $twig = Twig::create(__DIR__ . '/../src/view', ['cache' => __DIR__ . '/../var/cache/twig/', 'debug' => true]);
+$twig->addExtension(new DebugExtension());
 $container->set('twig', $twig);
 
 // Instantiate the app
