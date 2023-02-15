@@ -1,7 +1,8 @@
 PHP = docker exec -it -w /var/www lucian-php
+NODE = docker exec -it -w /var/www lucian-node
 
 init:
-	@make env up install
+	@make env build-docker up install
 
 env:
 	@echo "\n\e[92mChecking for existing env file\e[0m"
@@ -23,6 +24,19 @@ install:
 	@echo "\e[103;30m******************************         Install          ******************************\e[0m\n"
 	@$(PHP) composer install
 
-bash:
+php:
 	@echo "\e[103;30m******************************          PHP bash          ******************************\e[0m\n"
 	@$(PHP) bash
+
+node:
+	@echo "\e[103;30m******************************          PHP bash          ******************************\e[0m\n"
+	@$(NODE) sh
+
+up-b:
+	@docker-compose up -d --force-recreate --build
+
+build:
+	@$(NODE) npx webpack
+
+build-prod:
+	@$(NODE) npx webpack --mode=production

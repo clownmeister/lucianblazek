@@ -22,7 +22,6 @@ volumes:
 services:
     php:
         <<: *defaults
-        #image: ${IMAGE_PHP}
         build: './docker/php'
         container_name: ${CONTAINER_PREFIX}-php
         working_dir: /var/www
@@ -30,15 +29,15 @@ services:
         networks:
             - internal
         environment:
-            docker: "true"
             ENVIRONMENT: ${ENVIRONMENT}
+            docker: "true"
         volumes:
             - ./docker/php/conf.d/custom.ini:/usr/local/etc/php/conf.d/custom.ini
             - .:/var/www
             - logs:/var/www/logs
     web:
         <<: *defaults
-        image: ${IMAGE_NGINX}
+        image: nginx:1.23-alpine
         container_name: ${CONTAINER_PREFIX}-nginx
         ports:
             - ${APP_IP}:${APP_PORTS}
@@ -49,3 +48,12 @@ services:
         volumes:
             - ./docker/nginx/conf.d/${ENVIRONMENT}.conf:/etc/nginx/conf.d/default.conf:ro
             - ./:/var/www
+    node:
+        <<: *defaults
+        build: './docker/node'
+        container_name: ${CONTAINER_PREFIX}-node
+        working_dir: /var/www
+        user: ${DEV_UID}:${DEV_GID}
+        volumes:
+            - .:/var/www
+            - logs:/var/www/logs
