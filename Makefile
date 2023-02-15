@@ -2,7 +2,7 @@ PHP = docker exec -it -w /var/www lucian-php
 NODE = docker exec -it -w /var/www lucian-node
 
 init:
-	@make env build-docker up install
+	@make env up composer-install yarn-install yarn-build
 
 env:
 	@echo "\n\e[92mChecking for existing env file\e[0m"
@@ -20,9 +20,13 @@ env:
 up:
 	@docker-compose up -d --force-recreate
 
-install:
-	@echo "\e[103;30m******************************         Install          ******************************\e[0m\n"
+composer-install:
+	@echo "\e[103;30m******************************         Composer Install          ******************************\e[0m\n"
 	@$(PHP) composer install
+
+yarn-install:
+	@echo "\e[103;30m******************************         Composer Install          ******************************\e[0m\n"
+	@$(NODE) yarn install
 
 php:
 	@echo "\e[103;30m******************************          PHP bash          ******************************\e[0m\n"
@@ -35,8 +39,11 @@ node:
 up-b:
 	@docker-compose up -d --force-recreate --build
 
-build:
-	@$(NODE) npx webpack
+yarn-build build:
+	@$(NODE) yarn build
 
-build-prod:
-	@$(NODE) npx webpack --mode=production
+yarn-build-prod:
+	@$(NODE) yarn build-prod
+
+yarn-watch watch:
+	@$(NODE) yarn watch

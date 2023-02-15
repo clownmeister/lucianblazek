@@ -2,13 +2,26 @@
   "name": "lucianblazek.com",
   "version": "1.0.0",
   "description": "Personal application",
-  "main": "./public/build/index.js",
   "repository": "https://github.com/clownmeister/lucianblazek",
   "author": "ClownMeister",
   "license": "MIT",
   "private": true,
-  "dependencies": {},
+  "scripts": {
+    "build": "npx webpack",
+    "build-prod": "npx webpack --mode=production",
+    "watch": "webpack --watch --progress"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  },
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "css-loader": "^6.7.3",
+    "postcss-loader": "^7.0.2",
+    "precss": "^4.0.0",
+    "sass": "^1.58.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   }
