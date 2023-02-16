@@ -2,6 +2,7 @@ module.exports = {
   mode: 'development',
   entry: {
     main: './assets/src/index.ts',
+    bootstrap: './assets/style/index-bootstrap.scss',
   },
   output: {
     path: '/var/www/public/build/',
@@ -24,12 +25,9 @@ module.exports = {
             loader: 'postcss-loader', // Run post css actions
             options: {
               postcssOptions: {
-                plugins: function () { // post css plugins, can be exported to postcss.config.js
-                  return [
-                    require('precss'),
-                    require('autoprefixer')
-                  ];
-                }
+                plugins: [
+                  ['autoprefixer', {}]
+                ]
               }
             }
           },

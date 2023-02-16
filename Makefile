@@ -2,7 +2,7 @@ PHP = docker exec -it -w /var/www lucian-php
 NODE = docker exec -it -w /var/www lucian-node
 
 init:
-	@make env up composer-install yarn-install yarn-build
+	@make env up install yarn-build
 
 env:
 	@echo "\n\e[92mChecking for existing env file\e[0m"
@@ -27,6 +27,9 @@ composer-install:
 yarn-install:
 	@echo "\e[103;30m******************************         Composer Install          ******************************\e[0m\n"
 	@$(NODE) yarn install
+
+install:
+	make composer-install yarn-install
 
 php:
 	@echo "\e[103;30m******************************          PHP bash          ******************************\e[0m\n"

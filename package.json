@@ -18,8 +18,9 @@
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "css-loader": "^6.7.3",
+    "postcss": "^8.1.0",
     "postcss-loader": "^7.0.2",
-    "precss": "^4.0.0",
+    "postcss-preset-env": "^8.0.1",
     "sass": "^1.58.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
