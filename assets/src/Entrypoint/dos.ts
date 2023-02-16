@@ -2,11 +2,12 @@ import {Terminal} from "../Components/Terminal";
 
 const terminalSelector = '[data-terminal]';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (): void => {
   const terminalElement = document.querySelector(terminalSelector) as HTMLElement;
   if (terminalElement === null) {
     return;
   }
 
-  new Terminal(terminalElement);
+  const terminal = new Terminal(terminalElement);
+  void terminal.init();
 });

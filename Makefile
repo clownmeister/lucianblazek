@@ -50,3 +50,9 @@ yarn-build-prod:
 
 yarn-watch watch:
 	@$(NODE) yarn watch
+
+lint:
+	@$(NODE) yarn lint
+
+fix:
+	@$(NODE) yarn lint-fix

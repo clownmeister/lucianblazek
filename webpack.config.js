@@ -1,9 +1,17 @@
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 module.exports = {
   mode: 'development',
+  plugins: [new ESLintPlugin({
+    extensions: ['ts']
+  })],
   entry: {
     main: './assets/src/index.ts',
     dos: './assets/src/Entrypoint/dos.ts',
     bootstrap: './assets/style/index-bootstrap.scss',
+  },
+  resolve:{
+    extensions: ['.ts', '.js']
   },
   output: {
     path: '/var/www/public/build/',
@@ -12,15 +20,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(ts|js)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
+          loader: 'ts-loader',
         }
       },
       {

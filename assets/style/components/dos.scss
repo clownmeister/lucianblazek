@@ -4,9 +4,17 @@
   bottom: 0;
   left: 0;
   right: 0;
-
-  background-color: #000;
-  color: #00ff00;
+  background-color: $c-bg;
+  color: $c-text;
   padding: rem(10px);
   font-family: dos, sans-serif;
+  & p{
+    margin: 0;
+    cursor: default;
+    user-select: none;
+  }
+  & input {
+    all: unset;
+
+  }
 }
