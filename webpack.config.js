@@ -2,6 +2,7 @@ module.exports = {
   mode: 'development',
   entry: {
     main: './assets/src/index.ts',
+    dos: './assets/src/Entrypoint/dos.ts',
     bootstrap: './assets/style/index-bootstrap.scss',
   },
   output: {
@@ -10,6 +11,18 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
+          }
+        }
+      },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
