@@ -15,6 +15,7 @@ module.exports =  {
   ],
   rules:  {
     semi: 1,
-    "consistent-return": true
+    "@typescript-eslint/explicit-function-return-type": 1,
+    quotes: [1, "single", { "avoidEscape": true, "allowTemplateLiterals": true }]
   },
 };

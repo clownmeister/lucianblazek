@@ -1,4 +1,4 @@
-import {Terminal} from "../Components/Terminal";
+import {Terminal} from '../Components/Terminal';
 
 const terminalSelector = '[data-terminal]';
 

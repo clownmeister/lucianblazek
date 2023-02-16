@@ -8,13 +8,30 @@
   color: $c-text;
   padding: rem(10px);
   font-family: dos, sans-serif;
+  caret-color: transparent;
+  & * {
+    user-select: none;
+  }
   & p{
     margin: 0;
     cursor: default;
     user-select: none;
+    display: flex;
   }
   & input {
     all: unset;
-
+    flex: 1 1 auto;
+  }
+  &__caret {
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    height: $html-font-size;
+    width: calc($html-font-size/2);
+    background: $c-text;
+    &.active {
+      visibility: visible;
+      display: block;
+    }
   }
 }
