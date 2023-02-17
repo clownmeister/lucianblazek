@@ -66,9 +66,10 @@ export class Terminal {
 
     this.input = input as HTMLInputElement;
     this.input.addEventListener('input', () => this.updateCaret());
-    this.input.addEventListener('keydown', async () => {
-      await sleep(10);
-      this.updateCaret()
+    this.input.addEventListener('keydown', () => {
+      void sleep(10).then(()=>{
+        this.updateCaret();
+      });
     });
     this.input.focus();
     this.updateCaret();
