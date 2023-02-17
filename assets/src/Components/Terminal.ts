@@ -66,7 +66,7 @@ export class Terminal {
     this.caret = new Caret(this.parentElement);
     void sleep(5).then(()=> {
       this.waitForUserInput();
-    })
+    });
   }
 
   public writeLine(input: string): void {

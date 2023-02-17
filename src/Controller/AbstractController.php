@@ -17,5 +17,4 @@ abstract class AbstractController
         $this->container = $container;
         $this->view = $container->get('twig');
     }
-
 }

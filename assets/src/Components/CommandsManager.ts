@@ -2,8 +2,8 @@ import {TerminalCommandInterface} from '../TerminalCommand/AbstractTerminalComma
 import {AboutCommand} from '../TerminalCommand/AboutCommand';
 import {Terminal} from './Terminal';
 import {HelpCommand} from '../TerminalCommand/HelpCommand';
-import {ClearCommand} from "../TerminalCommand/ClearCommand";
-import {CvCommand} from "../TerminalCommand/CvCommand";
+import {ClearCommand} from '../TerminalCommand/ClearCommand';
+import {CvCommand} from '../TerminalCommand/CvCommand';
 
 export class CommandsManager {
   public commands: TerminalCommandInterface[];
@@ -29,7 +29,7 @@ export class CommandsManager {
       }
     }
     if (input.trim() !== '') {
-      this.terminal.writeLine("Bad command or file name")
+      this.terminal.writeLine('Bad command or file name');
     }
   }
 }

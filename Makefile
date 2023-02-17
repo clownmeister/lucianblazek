@@ -54,5 +54,18 @@ yarn-watch watch:
 lint:
 	@$(NODE) yarn lint
 
-fix:
+lint-fix:
 	@$(NODE) yarn lint-fix
+
+phpcs:
+	@$(PHP) php vendor/bin/phpcs
+
+phpcbf:
+	@$(PHP) php vendor/bin/phpcbf
+
+phpstan:
+	@$(PHP) php vendor/bin/phpstan
+
+test: lint phpcs phpstan
+
+fix: phpcbf lint-fix
