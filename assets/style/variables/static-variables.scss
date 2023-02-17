@@ -3,3 +3,11 @@ $html-font-size: 16px;
 //colors
 $c-text: #0f0;
 $c-bg: #000;
+$c-bg-contrast: #0f0;
+$c-text-contrast: #000;
+
+
+//caret
+$dos-caret-duration: .5s;
+$dos-caret-width: calc($html-font-size/2);
+$dos-caret-height: 3px;

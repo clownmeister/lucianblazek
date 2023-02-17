@@ -3,7 +3,9 @@ import {Caret} from './Caret';
 
 export class Terminal {
   private static inputLimit = 64;
+  private static userInputPrefix = 'A>';
   private readonly caret: Caret;
+  private input: HTMLInputElement | null = null;
 
   public constructor(
     private parentElement: HTMLElement,
@@ -14,7 +16,8 @@ export class Terminal {
 
   public async init(): Promise<void> {
     document.body.addEventListener('click', () => {
-      Terminal.setFocusInput();
+      this.input?.focus();
+      this.updateCaret();
     });
 
     await this.printBootSequence();
@@ -56,40 +59,34 @@ export class Terminal {
   }
 
   public waitForUserInput(): void {
-    this.parentElement.appendChild(Terminal.createInputLine());
-    Terminal.setFocusInput();
+    const line = Terminal.createLine(Terminal.userInputPrefix);
+    const input = Terminal.createInput();
+    line.appendChild(input);
+    this.parentElement.appendChild(line);
+
+    this.input = input as HTMLInputElement;
+    this.input.addEventListener('input', () => this.updateCaret());
+    this.input.addEventListener('keydown', async () => {
+      await sleep(10);
+      this.updateCaret()
+    });
+    this.input.focus();
     this.updateCaret();
   }
 
-  private updateCaret(active = true): void {
-    this.caret.setActive(active);
-    if (!active) {
-      return;
+  private updateCaret(): void {
+    this.caret.setActive(this.input !== null);
+    if (this.input !== null) {
+      this.caret.updatePosition(this.input);
     }
-
-    const elements = document.getElementsByTagName('input');
-    if (elements.length === 0) {
-      return;
-    }
-    this.caret.updatePosition(elements[0]);
   }
 
-  private static setFocusInput(): void {
-    const elements = document.getElementsByTagName('input');
-    if (elements.length === 0) {
-      return;
-    }
-    elements[0].focus();
-  }
-
-  static createInputLine(): HTMLElement {
-    const line = Terminal.createLine('A>');
+  static createInput(): HTMLElement {
     const element = document.createElement('input');
     element.setAttribute('type', 'text');
     element.setAttribute('maxlength', Terminal.inputLimit.toString());
-    line.appendChild(element);
 
-    return line;
+    return element;
   }
 
   static createLine(input: string): HTMLElement {
