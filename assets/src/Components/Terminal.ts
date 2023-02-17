@@ -12,7 +12,7 @@ export class Terminal {
 
   public constructor(
     private parentElement: HTMLElement,
-    private debug: boolean = true
+    private debug: boolean = false
   ) {
     this.caret = new Caret(this.parentElement);
   }
