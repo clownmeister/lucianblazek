@@ -1,9 +1,9 @@
 .dos {
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
+  min-height: 100%;
   background-color: $c-bg;
   color: $c-text;
   padding: rem(10px);
@@ -18,18 +18,24 @@
     color: $c-text-contrast;
     background: $c-bg-contrast;
   }
-  user-select: none;
 
   & p {
     margin: 0;
     cursor: default;
-    user-select: none;
     display: flex;
   }
 
   & input {
     all: unset;
     flex: 1 1 auto;
+  }
+
+  &__wrapper {
+    //position: relative;
+    //top: 0;
+    //left: 0;
+    //right: 0;
+    //bottom: 0;
   }
 
   &__caret {

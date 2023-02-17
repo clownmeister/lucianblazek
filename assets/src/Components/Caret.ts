@@ -23,9 +23,8 @@ export class Caret {
   }
 
   public updatePosition(input: HTMLInputElement): void {
-
     this.caretElement.style.top = (
-      input.getBoundingClientRect().top + Caret.charPixelHeight
+      input.getBoundingClientRect().top + Caret.charPixelHeight + document.documentElement.scrollTop
     ).toString() + 'px';
 
     this.caretElement.style.left = (

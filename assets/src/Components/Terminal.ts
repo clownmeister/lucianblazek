@@ -1,7 +1,10 @@
 import {formatDate, formatTime, getDayName, sleep} from './Utils';
 import {Caret} from './Caret';
+import {TerminalEventInterface} from '../Interface/TerminalEventInterface';
+import {EventDispatcher, Handler} from './EventDispatcher';
 
 export class Terminal {
+  public terminalEventDispatcher= new EventDispatcher<TerminalEventInterface>();
   private static inputLimit = 64;
   private static userInputPrefix = 'A>';
   private readonly caret: Caret;
@@ -21,6 +24,14 @@ export class Terminal {
     });
 
     await this.printBootSequence();
+  }
+
+  private triggerEvent (data: TerminalEventInterface): void {
+    this.terminalEventDispatcher.fire(data);
+  }
+
+  public addEventListener (handler: Handler<TerminalEventInterface>): void {
+    this.terminalEventDispatcher.register(handler);
   }
 
   private async printBootSequence(): Promise<void> {
@@ -66,13 +77,40 @@ export class Terminal {
 
     this.input = input as HTMLInputElement;
     this.input.addEventListener('input', () => this.updateCaret());
-    this.input.addEventListener('keydown', () => {
+    this.input.addEventListener('keydown', (event) => this.handleInputKeydown(event));
+    this.input.focus();
+    this.updateCaret();
+  }
+
+  private handleInputKeydown(event: KeyboardEvent): void {
+    if (event.key !== 'Enter'){
       void sleep(10).then(()=>{
         this.updateCaret();
       });
-    });
-    this.input.focus();
-    this.updateCaret();
+      return;
+    }
+
+    if (this.input === null) {
+      return;
+    }
+    const value = this.input.value;
+    const parent = this.input.parentElement;
+    this.triggerEvent( {terminal: this, message: value});
+    this.input.remove();
+    this.input = null;
+
+    Terminal.updateLine(parent, value);
+
+    this.waitForUserInput();
+  }
+
+  private static updateLine(line: HTMLElement | null, value: string): void {
+    if (line === null) {
+      return;
+    }
+
+    const text = document.createTextNode(value);
+    line.appendChild(text);
   }
 
   private updateCaret(): void {
@@ -86,6 +124,7 @@ export class Terminal {
     const element = document.createElement('input');
     element.setAttribute('type', 'text');
     element.setAttribute('maxlength', Terminal.inputLimit.toString());
+    element.setAttribute('spellcheck', 'false');
 
     return element;
   }

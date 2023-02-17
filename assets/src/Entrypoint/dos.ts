@@ -1,4 +1,5 @@
 import {Terminal} from '../Components/Terminal';
+import {CommandsManager} from '../Components/CommandsManager';
 
 const terminalSelector = '[data-terminal]';
 
@@ -9,5 +10,6 @@ document.addEventListener('DOMContentLoaded', (): void => {
   }
 
   const terminal = new Terminal(terminalElement);
+  new CommandsManager(terminal);
   void terminal.init();
 });
