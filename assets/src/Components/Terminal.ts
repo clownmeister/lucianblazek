@@ -64,7 +64,9 @@ export class Terminal {
     this.parentElement.innerHTML = '';
 
     this.caret = new Caret(this.parentElement);
-    this.waitForUserInput();
+    void sleep(5).then(()=> {
+      this.waitForUserInput();
+    })
   }
 
   public writeLine(input: string): void {
@@ -93,7 +95,7 @@ export class Terminal {
 
   private handleInputKeydown(event: KeyboardEvent): void {
     if (event.key !== 'Enter'){
-      void sleep(10).then(()=>{
+      void sleep(5).then(()=>{
         this.updateCaret();
       });
       return;
