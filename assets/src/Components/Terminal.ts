@@ -7,7 +7,7 @@ export class Terminal {
   public terminalEventDispatcher= new EventDispatcher<TerminalEventInterface>();
   private static inputLimit = 64;
   private static userInputPrefix = 'A>';
-  private readonly caret: Caret;
+  private caret: Caret;
   private input: HTMLInputElement | null = null;
 
   public constructor(
@@ -58,6 +58,15 @@ export class Terminal {
     }
   }
 
+  public clear(): void {
+    this.input?.remove();
+    this.input = null;
+    this.parentElement.innerHTML = '';
+
+    this.caret = new Caret(this.parentElement);
+    this.waitForUserInput();
+  }
+
   public writeLine(input: string): void {
     this.parentElement.appendChild(Terminal.createLine(input));
   }
@@ -66,7 +75,7 @@ export class Terminal {
     if (!this.debug) {
       await sleep(delay);
     }
-    this.parentElement.appendChild(Terminal.createLine(input));
+    this.writeLine(input);
   }
 
   public waitForUserInput(): void {
@@ -131,9 +140,9 @@ export class Terminal {
 
   static createLine(input: string): HTMLElement {
     const element = document.createElement('p');
-    const text = document.createTextNode(input);
-    element.appendChild(text);
-
+    // const text = document.createTextNode(input);
+    // element.appendChild(text);
+    element.innerHTML = input;
     return element;
   }
 }

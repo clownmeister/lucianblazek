@@ -12,6 +12,7 @@ export class HelpCommand extends AbstractTerminalCommand {
   }
 
   public execute(): void {
+    this.terminal.breakLine();
     this.terminal.writeLine('Available commands:');
     this.terminal.breakLine();
     this.printCommandsInfo();

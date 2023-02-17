@@ -1,7 +1,9 @@
 import {TerminalCommandInterface} from '../TerminalCommand/AbstractTerminalCommand';
-import {HelloWorldCommand} from '../TerminalCommand/HelloWorldCommand';
+import {AboutCommand} from '../TerminalCommand/AboutCommand';
 import {Terminal} from './Terminal';
 import {HelpCommand} from '../TerminalCommand/HelpCommand';
+import {ClearCommand} from "../TerminalCommand/ClearCommand";
+import {CvCommand} from "../TerminalCommand/CvCommand";
 
 export class CommandsManager {
   public commands: TerminalCommandInterface[];
@@ -10,7 +12,9 @@ export class CommandsManager {
     const helpCommand = new HelpCommand(terminal);
     this.commands = [
       helpCommand,
-      new HelloWorldCommand(terminal)
+      new AboutCommand(terminal),
+      new CvCommand(terminal),
+      new ClearCommand(terminal),
     ];
 
     helpCommand.updateCommandList(this.commands);
@@ -21,7 +25,11 @@ export class CommandsManager {
     for (const command of this.commands) {
       if (command.supports(input)) {
         command.execute(input);
+        return;
       }
+    }
+    if (input.trim() !== '') {
+      this.terminal.writeLine("Bad command or file name")
     }
   }
 }

@@ -19,10 +19,19 @@
     background: $c-bg-contrast;
   }
 
+  & a,a:visited {
+    color: inherit;
+    &:hover {
+      color: $c-text-contrast;
+      background-color: $c-bg-contrast;
+    }
+  }
+
   & p {
     margin: 0;
     cursor: default;
     display: flex;
+    white-space: break-spaces;
   }
 
   & input {
