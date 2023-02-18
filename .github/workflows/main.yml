@@ -31,6 +31,7 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
+          chmod -R 755 /var/www/public
           npm run build-prod
 
       - name: 📂 Sync files
