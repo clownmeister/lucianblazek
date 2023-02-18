@@ -31,6 +31,7 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
+          ls -la
           pwd
           chmod -R 755 /public
           npm run build-prod
