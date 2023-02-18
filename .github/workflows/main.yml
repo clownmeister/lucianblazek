@@ -30,11 +30,11 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
-          npm install
-          ls -la
+          yarn install
           pwd
+          ls -la
           chmod -R 755 ./public
-          npm run build-prod
+          yarn build-prod
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3

@@ -14,7 +14,7 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   output: {
-    path: '/var/www/public/build/',
+    path: './public/build/',
     filename: '[name].bundle.js',
   },
   module: {
