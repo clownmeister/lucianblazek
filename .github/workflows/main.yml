@@ -42,7 +42,7 @@ jobs:
         run: echo "vendor/:composer.lock" > .git-ftp-include
 
       - name: Move public to www
-        run: mv ./public ./www
+        run: cp -R ./public ./www
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -58,3 +58,4 @@ jobs:
             **/logs/**
             **/var/**
             **/assets/**
+            **/public/**
