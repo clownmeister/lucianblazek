@@ -58,3 +58,15 @@ jobs:
             **/logs/**
             **/var/**
             **/assets/**
+            **/tests/**
+            .env
+            .eslint
+            docker-compose.yml
+            phpcs.xml
+            phpstan.neon
+            phpunit.xml
+            README.md
+            test.babelrc
+            tsconfig.json
+            webpack.config.js
+            Makefile
