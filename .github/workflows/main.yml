@@ -31,10 +31,10 @@ jobs:
       - name: 🔨 Build Project
         run: |
           yarn install
-          pwd
-          ls -la
-          chmod -R 755 ./public
           yarn build-prod
+
+      - name: Adding Vendor
+        run: echo "vendor/:composer.lock" > .git-ftp-include
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
@@ -42,3 +42,11 @@ jobs:
           server: ${{ secrets.ftp_server }}
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/docker/**
+            **/logs/**
+            **/var/**
+            **/assets/**
