@@ -15,7 +15,7 @@ export class AboutCommand extends AbstractTerminalCommand {
     this.terminal.writeLine('2020 - Covid happened, no more Korea ;(');
     this.terminal.writeLine('2020 - Living in S. Korea working remote for Realpad');
     this.terminal.writeLine('2019 - Contractor for 1. Web IT');
-    this.terminal.writeLine('2018 - <a target"_blank" href="https://www.timemakerint.cz/">Timemaker</a>');
+    this.terminal.writeLine('2018 - <a target"_blank" href="https://www.timemakerint.com/">Timemaker</a>');
     this.terminal.writeLine('2017 - <a target"_blank" href="https://www.partydo.cz/">Partydo</a>');
     this.terminal.writeLine('2016 - Got 2 crazy <a target="_blank" href="/upload/dogs.jpg">dogs</a>!');
     this.terminal.writeLine('2016 - Working as on-site technic');
