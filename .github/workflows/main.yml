@@ -37,10 +37,12 @@ jobs:
           dependency-versions: ${{ matrix.dependencies }}
           composer-options: ${{ matrix.composer-options }}
 
-      - name: 🔨 Build Project with Node.js ${{ matrix.node }}
+      - name: Setup with Node.js ${{ matrix.node }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+
+      - name: 🔨 Build Project
         run: |
           yarn install
           yarn build-prod
