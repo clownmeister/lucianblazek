@@ -8,9 +8,19 @@ export class AboutCommand extends AbstractTerminalCommand {
     super(terminal);
   }
   public execute(): void {
-    this.terminal.writeLine('2020 - Engaged');
-    this.terminal.writeLine('2020 - Got 2 crazy <a target="_blank" href="http://www.placeholder.com/100x100">dogs</a>!');
-    this.terminal.writeLine('2018 - Partydo');
+    this.terminal.writeLine('2022 - Got a <a target="_blank" href="/upload/cat.jpg">cat</a> ^.^');
+    this.terminal.writeLine('2020 - Contracted by FTMO to this day');
+    this.terminal.writeLine('2020 - Married');
+    this.terminal.writeLine('2020 - Mediafactory a.s. (vodafone, o2)');
+    this.terminal.writeLine('2020 - Covid happened, no more Korea ;(');
+    this.terminal.writeLine('2020 - Living in S. Korea working remote for Realpad');
+    this.terminal.writeLine('2019 - Contractor for 1. Web IT');
+    this.terminal.writeLine('2018 - <a target"_blank" href="https://www.timemakerint.cz/">Timemaker</a>');
+    this.terminal.writeLine('2017 - <a target"_blank" href="https://www.partydo.cz/">Partydo</a>');
+    this.terminal.writeLine('2016 - Got 2 crazy <a target="_blank" href="/upload/dogs.jpg">dogs</a>!');
+    this.terminal.writeLine('2016 - Working as on-site technic');
     this.terminal.writeLine('1997 - Born');
+    this.terminal.breakLine();
+    this.terminal.writeLine('Type "cv" for more hr friendly version :)');
   }
 }
