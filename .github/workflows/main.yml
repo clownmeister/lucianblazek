@@ -1,4 +1,9 @@
 on:
+  workflow_run:
+    workflows: ["Deploy"]
+    types: [requested]
+    branches:
+      - master
   push:
     branches:
       - master
