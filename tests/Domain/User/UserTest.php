@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Domain\User;
+namespace ClownMeister\Tests\Domain\User;
 
-use App\Domain\User\User;
-use Tests\TestCase;
+use ClownMeister\Domain\User\User;
+use ClownMeister\Tests\TestCase;
 
 class UserTest extends TestCase
 {

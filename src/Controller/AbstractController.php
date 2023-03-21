@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace ClownMeister\Controller;
 
 use Psr\Container\ContainerInterface;
 use Slim\Views\Twig;

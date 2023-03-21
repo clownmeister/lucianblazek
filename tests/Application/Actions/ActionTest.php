@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Application\Actions;
+namespace ClownMeister\Tests\Application\Actions;
 
-use App\Application\Actions\Action;
-use App\Application\Actions\ActionPayload;
+use ClownMeister\Application\Actions\Action;
+use ClownMeister\Application\Actions\ActionPayload;
+use ClownMeister\Tests\TestCase;
 use DateTimeImmutable;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Log\LoggerInterface;
-use Tests\TestCase;
 
 class ActionTest extends TestCase
 {

@@ -7,53 +7,71 @@ networks:
         name: ${CONTAINER_PREFIX}-internal
 
 x-defaults: &defaults
-    tty: true
-    restart: ${DOCKER_RESTART_POLICY}
-    logging:
-        driver: "json-file"
-        options:
-            max-file: "10"
-            max-size: "10m"
+  tty: true
+  restart: ${DOCKER_RESTART_POLICY}
+  logging:
+    driver: "json-file"
+    options:
+      max-file: "10"
+      max-size: "10m"
+
+x-php: &php
+  build:
+    context: './docker/php'
+    args:
+      DEV_UID: ${DEV_UID}
+      DEV_GID: ${DEV_GID}
+  working_dir: /var/www
+  networks:
+    - internal
+  environment:
+    ENVIRONMENT: ${ENVIRONMENT}
+    docker: "true"
 
 volumes:
-    logs:
-        driver: local
+  logs:
+    driver: local
 
 services:
-    php:
-        <<: *defaults
-        build: './docker/php'
-        container_name: ${CONTAINER_PREFIX}-php
-        working_dir: /var/www
-        user: ${DEV_UID}:${DEV_GID}
-        networks:
-            - internal
-        environment:
-            ENVIRONMENT: ${ENVIRONMENT}
-            docker: "true"
-        volumes:
-            - ./docker/php/conf.d/custom.ini:/usr/local/etc/php/conf.d/custom.ini
-            - .:/var/www
-            - logs:/var/www/logs
-    web:
-        <<: *defaults
-        image: nginx:1.23-alpine
-        container_name: ${CONTAINER_PREFIX}-nginx
-        ports:
-            - ${APP_IP}:${APP_PORTS}
-        networks:
-            - internal
-        depends_on:
-            - php
-        volumes:
-            - ./docker/nginx/conf.d/${ENVIRONMENT}.conf:/etc/nginx/conf.d/default.conf:ro
-            - ./:/var/www
-    node:
-        <<: *defaults
-        build: './docker/node'
-        container_name: ${CONTAINER_PREFIX}-node
-        working_dir: /var/www
-        user: ${DEV_UID}:${DEV_GID}
-        volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+  web:
+    <<: *defaults
+    image: nginx:1.23-alpine
+    container_name: ${CONTAINER_PREFIX}-nginx
+    ports:
+      - ${APP_IP}:${APP_PORTS}
+    networks:
+      - internal
+    depends_on:
+      - app
+      - invoice
+    volumes:
+      - ./docker/nginx/conf.d/${ENVIRONMENT}.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/var/www
+
+  app:
+    <<: *defaults
+    <<: *php
+    container_name: ${CONTAINER_PREFIX}-app
+    volumes:
+      - ./docker/php/conf.d/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - .:/var/www
+      - logs:/var/www/logs
+  invoice:
+    <<: *defaults
+    <<: *php
+    environment:
+      APP: ${INVOICE_APP}
+    container_name: ${CONTAINER_PREFIX}-invoice
+    volumes:
+      - ./docker/php/conf.d/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - .:/var/www
+      - logs:/var/www/logs
+  node:
+    <<: *defaults
+    build: './docker/node'
+    container_name: ${CONTAINER_PREFIX}-node
+    working_dir: /var/www
+    user: ${DEV_UID}:${DEV_GID}
+    volumes:
+      - .:/var/www
+      - logs:/var/www/logs

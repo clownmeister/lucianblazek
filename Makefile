@@ -1,4 +1,4 @@
-PHP = docker exec -it -w /var/www lucian-php
+PHP = docker exec -it -w /var/www lucian-app
 NODE = docker exec -it -w /var/www lucian-node
 
 init:
