@@ -15,6 +15,6 @@ abstract class AbstractController
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->view = $container->get('twig');
+        $this->view = $container->get(Twig::class);
     }
 }

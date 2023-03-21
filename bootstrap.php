@@ -58,7 +58,7 @@ if ($appType !== 'app' && file_exists($appPath . '/routes.php')) {
 } else {
     $routes = require $basePath . '/routes.php';
 }
-$routes($routes);
+$routes($app);
 
 /** @var SettingsInterface $settings */
 $settings = $container->get(SettingsInterface::class);
