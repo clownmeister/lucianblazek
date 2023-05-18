@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace InvoiceBundle\Controller;
-
 
 use ClownMeister\Controller\AbstractController;
 use Psr\Http\Message\ResponseInterface;
