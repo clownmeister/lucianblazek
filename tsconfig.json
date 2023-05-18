@@ -1,5 +1,7 @@
 {
-  "include": ["assets/src/**/*"],
+  "include": [
+    "application/**/*.ts"
+  ],
   "compilerOptions": {
     "outDir": "./public/build",
     "noImplicitAny": true,

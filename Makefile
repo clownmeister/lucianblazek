@@ -43,7 +43,7 @@ up-b:
 	@docker-compose up -d --force-recreate --build
 
 yarn-build build:
-	@$(NODE) yarn build
+	docker exec -it -w /var/www/application/Dos lucian-node npx webpack --mode=development --progress
 
 yarn-build-prod:
 	@$(NODE) yarn build-prod

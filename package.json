@@ -7,9 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "npx webpack --mode=development --progress",
-    "build-prod": "npx webpack --mode=production",
-    "watch": "webpack --watch --progress",
+    "build": "npx --cwd ./application/Dos/ webpack --mode=development --progress",
+    "build-prod": "npx --cwd ./application/Dos/ webpack --mode=production",
+    "watch": "yarn --cwd ./application/Dos/ webpack --watch --progress",
     "lint": "eslint assets --ext .ts",
     "lint-fix": "yarn lint --fix"
   },

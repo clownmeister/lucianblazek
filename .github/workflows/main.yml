@@ -50,8 +50,11 @@ jobs:
       - name: Adding Vendor
         run: echo "vendor/:composer.lock" > .git-ftp-include
 
-      - name: Move public to www
+      - name: Move public to /www
         run: mv ./public ./www
+
+      - name: Rename domains to subdoms to comply with forpsi
+        run: mv ./domains ./subdoms
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.3

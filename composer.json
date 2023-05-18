@@ -43,12 +43,14 @@
     },
     "autoload": {
         "psr-4": {
-            "ClownMeister\\": "src/"
+            "ClownMeister\\Dos\\": "application/Dos/src",
+            "ClownMeister\\Invoice\\": "application/Invoice/src",
+            "ClownMeister\\Dnd\\": "application/Dnd/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ClownMeister\\Tests\\": "tests/"
+            "ClownMeister\\Dos\\Tests\\": "application/Dos/tests"
         }
     },
     "scripts": {
