@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Infrastructure\Persistence\User;
+namespace ClownMeister\Tests\Infrastructure\Persistence\User;
 
-use App\Domain\User\User;
-use App\Domain\User\UserNotFoundException;
-use App\Infrastructure\Persistence\User\InMemoryUserRepository;
-use Tests\TestCase;
+use ClownMeister\Domain\User\User;
+use ClownMeister\Domain\User\UserNotFoundException;
+use ClownMeister\Infrastructure\Persistence\User\InMemoryUserRepository;
+use ClownMeister\Tests\TestCase;
 
 class InMemoryUserRepositoryTest extends TestCase
 {

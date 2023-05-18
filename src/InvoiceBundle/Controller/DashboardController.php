@@ -2,20 +2,25 @@
 
 declare(strict_types=1);
 
-namespace ClownMeister\Controller;
+namespace InvoiceBundle\Controller;
 
+use ClownMeister\Controller\AbstractController;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class HomeController extends AbstractController
+class DashboardController extends AbstractController
 {
     /**
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @param array $args
+     * @return ResponseInterface
+     * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
-     * @throws LoaderError
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
@@ -25,8 +30,7 @@ class HomeController extends AbstractController
 
         return $this->view->render(
             $response,
-            'pages/dos.html.twig',
-            []
+            '@invoiceBundle/pages/dashboard.html.twig'
         );
     }
 }

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\Application\Actions\User;
+namespace ClownMeister\Tests\Application\Actions\User;
 
-use App\Application\Actions\ActionError;
-use App\Application\Actions\ActionPayload;
-use App\Application\Handlers\HttpErrorHandler;
-use App\Domain\User\User;
-use App\Domain\User\UserNotFoundException;
-use App\Domain\User\UserRepository;
+use ClownMeister\Application\Actions\ActionError;
+use ClownMeister\Application\Actions\ActionPayload;
+use ClownMeister\Application\Handlers\HttpErrorHandler;
+use ClownMeister\Domain\User\User;
+use ClownMeister\Domain\User\UserNotFoundException;
+use ClownMeister\Domain\User\UserRepository;
+use ClownMeister\Tests\TestCase;
 use DI\Container;
 use Slim\Middleware\ErrorMiddleware;
-use Tests\TestCase;
 
 class ViewUserActionTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace ClownMeister\Controller;
 
 use Psr\Container\ContainerInterface;
 use Slim\Views\Twig;
@@ -15,6 +15,6 @@ abstract class AbstractController
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->view = $container->get('twig');
+        $this->view = $container->get(Twig::class);
     }
 }

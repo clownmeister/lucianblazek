@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests;
+namespace ClownMeister\Tests;
 
 use DI\ContainerBuilder;
 use Exception;

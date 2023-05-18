@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Application\Actions\User;
+namespace ClownMeister\Tests\Application\Actions\User;
 
-use App\Application\Actions\ActionPayload;
-use App\Domain\User\UserRepository;
-use App\Domain\User\User;
+use ClownMeister\Application\Actions\ActionPayload;
+use ClownMeister\Domain\User\User;
+use ClownMeister\Domain\User\UserRepository;
+use ClownMeister\Tests\TestCase;
 use DI\Container;
-use Tests\TestCase;
 
 class ListUserActionTest extends TestCase
 {
