@@ -21,8 +21,7 @@ class ActionPayload implements JsonSerializable
         int $statusCode = 200,
         $data = null,
         ?ActionError $error = null
-    )
-    {
+    ) {
         $this->statusCode = $statusCode;
         $this->data = $data;
         $this->error = $error;
