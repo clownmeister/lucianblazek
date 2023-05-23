@@ -6,13 +6,7 @@
   "author": "ClownMeister",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "build": "npx --cwd ./application/Dos/ webpack --mode=development --progress",
-    "build-prod": "npx --cwd ./application/Dos/ webpack --mode=production",
-    "watch": "yarn --cwd ./application/Dos/ webpack --watch --progress",
-    "lint": "eslint assets --ext .ts",
-    "lint-fix": "yarn lint --fix"
-  },
+  "scripts": {},
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3"

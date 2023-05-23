@@ -43,19 +43,19 @@ up-b:
 	@docker-compose up -d --force-recreate --build
 
 yarn-build build:
-	docker exec -it -w /var/www/application/Dos lucian-node npx webpack --mode=development --progress
+	@$(NODE) yarn webpack --mode=development --progress
 
 yarn-build-prod:
-	@$(NODE) yarn build-prod
+	@$(NODE) yarn webpack --mode=production
 
 yarn-watch watch:
-	@$(NODE) yarn watch
+	@$(NODE) yarn webpack --watch --progress
 
 lint:
-	@$(NODE) yarn lint
+	@$(NODE) yarn eslint application --ext .ts
 
 lint-fix:
-	@$(NODE) yarn lint-fix
+	@$(NODE) yarn eslint application --fix --ext .ts
 
 phpcs:
 	@$(PHP) php vendor/bin/phpcs
@@ -68,4 +68,4 @@ phpstan:
 
 test: lint phpcs phpstan
 
-fix: phpcbf lint-fix
+fix: lint-fix phpcbf

@@ -17,7 +17,13 @@ return function (ContainerBuilder $containerBuilder) {
         Twig::class => function (ContainerInterface $container) {
             $settings = $container->get(SettingsInterface::class);
             $twigSettings = $settings->get('twig');
-            $twig = Twig::create($twigSettings['path'], ['cache' => $twigSettings['cache'], 'debug' => $twigSettings['debug']]);
+            $twig = Twig::create(
+                $twigSettings['path'],
+                [
+                    'cache' => $twigSettings['cache'],
+                    'debug' => $twigSettings['debug']
+                ]
+            );
             $twig->addExtension(new DebugExtension());
 
             return $twig;

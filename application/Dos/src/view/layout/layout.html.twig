@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ pageTitle }} | Lucián Blažek</title>
-    <script src="/build/main.bundle.js"></script>
-    <script src="/build/bootstrap.bundle.js"></script>
+    <script src="/build/dos.bundle.js"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
 {% block menu %}
-    {{ include('components/menu.html.twig') }}
+    {{ include('@dosBundle/components/menu.html.twig') }}
 {% endblock %}
 <div class="container">
     {% if user is defined %}
@@ -18,7 +17,7 @@
 
         {% endblock %}
     {% else %}
-        {{ include('components/logout.html.twig') }}
+        {{ include('@dosBundle/components/logout.html.twig') }}
     {% endif %}
 </div>
 </body>

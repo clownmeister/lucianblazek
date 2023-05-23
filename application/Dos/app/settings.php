@@ -25,7 +25,8 @@ return function (ContainerBuilder $containerBuilder) {
                 ],
                 'twig' => [
                     'path' => [
-                        __DIR__ . '/../src/view'
+                        __DIR__ . '/../src/view',
+                        'dosBundle' => __DIR__ . '/../src/view'
                     ],
                     'cache' => $local ? false : __DIR__ . '/../../../var/cache/twig/',
                     'debug' => $local

@@ -15,5 +15,4 @@ return function (App $app) {
     $app->get('/', HomeController::class . ':index')->setName('app.home');
     $app->get('/login', HomeController::class . ':index')->setName('app.login');
     $app->get('/logout', HomeController::class . ':index')->setName('app.logout');
-
 };
