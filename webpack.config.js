@@ -6,9 +6,8 @@ module.exports = {
     extensions: ['ts']
   })],
   entry: {
-    main: './assets/src/index.ts',
-    dos: './assets/src/Entrypoint/dos.ts',
-    bootstrap: './assets/style/index-bootstrap.scss',
+    'dos': './application/Dos/assets/src/index.ts',
+    './../../domains/dnd/build/dnd': './application/Dnd/assets/src/index.ts',
   },
   resolve:{
     extensions: ['.ts', '.js']
