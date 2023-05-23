@@ -49,7 +49,7 @@ yarn-build-prod:
 	@$(NODE) yarn webpack --mode=production
 
 yarn-watch watch:
-	@$(NODE) yarn webpack --watch --progress
+	@$(NODE) yarn webpack --mode=development --watch --progress
 
 lint:
 	@$(NODE) yarn eslint application --ext .ts
