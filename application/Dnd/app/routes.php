@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use InvoiceBundle\Controller\DashboardController;
+use ClownMeister\Dnd\Controller\HomeController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
@@ -12,5 +12,5 @@ return function (App $app) {
         // CORS Pre-Flight OPTIONS Request Handler
         return $response;
     });
-    $app->get('/', DashboardController::class . ':index')->setName('invoice.home');
+    $app->get('/', HomeController::class . ':index')->setName('app.home');
 };
