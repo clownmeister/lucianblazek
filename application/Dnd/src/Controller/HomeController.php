@@ -25,7 +25,7 @@ class HomeController extends AbstractController
 
         return $this->view->render(
             $response,
-            'pages/dos.html.twig',
+            'pages/home.html.twig',
             []
         );
     }

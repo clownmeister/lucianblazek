@@ -6,13 +6,14 @@ module.exports = {
     extensions: ['ts']
   })],
   entry: {
-    dos: './application/Dos/assets/src/index.ts',
+    'public/build/dos': './application/Dos/assets/src/index.ts',
+    'domains/dnd/build/dnd': './application/Dnd/assets/src/index.ts',
   },
   resolve:{
     extensions: ['.ts', '.js']
   },
   output: {
-    path: path.resolve(__dirname, './public/build/'),
+    path: path.resolve(__dirname, './'),
     filename: '[name].bundle.js',
   },
   module: {

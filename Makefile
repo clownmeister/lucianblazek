@@ -69,3 +69,4 @@ phpstan:
 test: lint phpcs phpstan
 
 fix: lint-fix phpcbf
+
