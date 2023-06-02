@@ -7,8 +7,11 @@
   width: $sidebar-width;
   height: 100vh;
   display: block;
-  background-color: $bg-dark-upper;
   text-align: center;
+
+  @include theme(dark) {
+      background-color: $bg-dark-upper;
+  }
 
   &__content {
     display: flex;
@@ -19,16 +22,20 @@
   &__logo {
     font-weight: 700;
     font-size: 32px;
-    color: $c-text-light-heading;
+    @include theme(dark) {
+      color: $c-text-light-heading;
+    }
   }
 
   &__item {
     font-size: 24px;
     & > a {
-      color: $c-text-light;
       text-decoration: none;
-      &:hover {
-        color: $c-text-light-hover;
+      @include theme(dark) {
+        color: $c-text-light;
+        &:hover {
+          color: $c-text-light-hover;
+        }
       }
     }
   }

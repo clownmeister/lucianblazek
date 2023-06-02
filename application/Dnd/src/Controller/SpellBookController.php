@@ -10,7 +10,7 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
-class HomeController extends AbstractController
+class SpellBookController extends AbstractController
 {
     /**
      * @throws RuntimeError
@@ -25,7 +25,7 @@ class HomeController extends AbstractController
 
         return $this->view->render(
             $response,
-            'pages/home.html.twig',
+            'pages/spell-book.html.twig',
             []
         );
     }

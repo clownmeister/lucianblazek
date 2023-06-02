@@ -1,0 +1,5 @@
+@import "variables/static-variables";
+
+* {
+  transition: color $theme-switch-animation-duration-text linear, background-color $theme-switch-animation-duration-bg linear;
+}

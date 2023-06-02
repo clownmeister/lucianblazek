@@ -1,14 +1,16 @@
 <div class="sidebar">
     <div class="sidebar__content">
-        <a href="/" class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="tooltip"
-           data-bs-placement="right" data-bs-original-title="Icon-only">
+        <a href="{{ url_for('dnd.dashboard') }}" class="d-block p-3 link-dark text-decoration-none">
             <div class="sidebar__logo">5E</div>
         </a>
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
             {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'person-vcard', tooltip: 'Interactive Character Sheet'} %}
-            {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'journal-bookmark', tooltip: 'Spellbook'} %}
+            {% include '@dndBundle/components/sidebar-item.html.twig' with {href: url_for('dnd.spell_book'),icon: 'journal-bookmark', tooltip: 'Spellbook'} %}
         </ul>
         <div class="dropdown border-top">
+                <div class="theme-switcher mt-3" data-target="theme-switcher"
+                     data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Theme switcher"
+                ><i class="bi bi-lightbulb-fill"></i></div>
             {% if user is defined %}
                 {{ include('@dndBundle/components/sidebar-user-dropdown.html.twig') }}
             {% else %}
