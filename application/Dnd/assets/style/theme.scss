@@ -1,0 +1,6 @@
+@import "variables/static-variables";
+
+* {
+  transition: color $theme-switch-animation-duration,
+  background-color $theme-switch-animation-duration;
+}

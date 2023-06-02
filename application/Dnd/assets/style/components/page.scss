@@ -2,8 +2,6 @@
 
 .page {
   display: block;
-  background-color: $bg-dark;
-  color: $c-text-light;
   &--sidebar {
     padding-left: $sidebar-width;
     min-height: 100vh;
