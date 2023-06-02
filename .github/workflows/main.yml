@@ -44,8 +44,8 @@ jobs:
 
       - name: 🔨 Build Project
         run: |
-          yarn install
-          yarn build-prod
+          make install
+          make build-prod
 
       - name: Adding Vendor
         run: echo "vendor/:composer.lock" > .git-ftp-include
