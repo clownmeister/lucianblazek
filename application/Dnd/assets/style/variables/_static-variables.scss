@@ -6,6 +6,7 @@ $html-font-size: 16px;
 $sidebar-width: 75px;
 
 //colors
+$c-text-dark: #000;
 $c-text-light-heading: #f6f6f6;
 $c-text-light: #eeeeee;
 $c-text-light-hover: #fff;
@@ -14,4 +15,5 @@ $bg-dark: $dark;
 $bg-dark-upper: #33383D;
 
 //animations
-$theme-switch-animation-duration: 0.4s;
+$theme-switch-animation-duration-text: .4s;
+$theme-switch-animation-duration-bg: .4s;

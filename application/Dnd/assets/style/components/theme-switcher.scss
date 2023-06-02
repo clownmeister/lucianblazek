@@ -1,3 +1,7 @@
 .theme-switcher {
   cursor: pointer;
+  color: $c-text-dark;
+  @include theme(dark) {
+    color: $c-text-light-heading;
+  }
 }
