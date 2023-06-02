@@ -1,0 +1,6 @@
+<li class="nav-item sidebar__item">
+    <a href="{{ href ?? '#' }}" class="nav-link {{ not active ?: 'active' }} py-3 border-bottom rounded-0"
+            {% if tooltip is defined %} data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="{{ tooltip }}"{% endif %}>
+        <i class="bi bi-{{ icon ?? '' }}"></i>
+    </a>
+</li>

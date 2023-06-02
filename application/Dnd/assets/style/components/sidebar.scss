@@ -1,0 +1,35 @@
+@import '../variables/static-variables';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $sidebar-width;
+  height: 100vh;
+  display: block;
+  background-color: $bg-dark-upper;
+  text-align: center;
+
+  &__content {
+    display: flex;
+    flex-flow: column;
+    flex: 1 1 auto;
+  }
+
+  &__logo {
+    font-weight: 700;
+    font-size: 32px;
+    color: $c-text-light-heading;
+  }
+
+  &__item {
+    font-size: 24px;
+    & > a {
+      color: $c-text-light;
+      text-decoration: none;
+      &:hover {
+        color: $c-text-light-hover;
+      }
+    }
+  }
+}

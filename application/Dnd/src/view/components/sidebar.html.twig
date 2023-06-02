@@ -1,0 +1,19 @@
+<div class="sidebar">
+    <div class="sidebar__content">
+        <a href="/" class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="tooltip"
+           data-bs-placement="right" data-bs-original-title="Icon-only">
+            <div class="sidebar__logo">5E</div>
+        </a>
+        <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+            {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'person-vcard'} %}
+            {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'journal-bookmark'} %}
+        </ul>
+        <div class="dropdown border-top">
+            {% if user is defined %}
+                {{ include('@dndBundle/components/sidebar-user-dropdown.html.twig') }}
+            {% else %}
+                <button class="btn btn-primary btn-sm mt-3">Login</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
