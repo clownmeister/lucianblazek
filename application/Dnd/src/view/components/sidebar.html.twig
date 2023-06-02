@@ -5,8 +5,8 @@
             <div class="sidebar__logo">5E</div>
         </a>
         <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-            {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'person-vcard'} %}
-            {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'journal-bookmark'} %}
+            {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'person-vcard', tooltip: 'Interactive Character Sheet'} %}
+            {% include '@dndBundle/components/sidebar-item.html.twig' with {icon: 'journal-bookmark', tooltip: 'Spellbook'} %}
         </ul>
         <div class="dropdown border-top">
             {% if user is defined %}
