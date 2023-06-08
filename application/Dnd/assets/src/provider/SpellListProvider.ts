@@ -1,4 +1,6 @@
 import axios from 'axios';
+import {GetSpellsRequest} from '../type/GetSpellsRequest';
+import {GetSpellsResponse} from "../type/GetSpellsResponse";
 
 export default class SpellListProvider{
   readonly host: string;
@@ -9,12 +11,12 @@ export default class SpellListProvider{
 
   async fetchSpells(data: GetSpellsRequest): Promise<GetSpellsResponse> {
     console.log(data)
-    return axios.post(`${this.host}/order/proto`, data)
+    return axios.post(`${this.host}/spells`, data)
       .then(function (response) {
-        return response.data as OrderProtoResponse;
+        return response.data as GetSpellsResponse;
       })
       .catch(function (error) {
-        throw new Error(`Could not fetch order data: ${error.message}`);
+        throw new Error(`Could not fetch: ${error.message}`);
       });
   }
 }
