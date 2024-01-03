@@ -24,7 +24,7 @@
     "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
     "eslint-webpack-plugin": "^4.0.0",
-    "postcss": "^8.1.0",
+    "postcss": "^8.4.31",
     "postcss-loader": "^7.0.2",
     "postcss-preset-env": "^8.0.1",
     "sass": "^1.58.1",
